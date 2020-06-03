@@ -1,0 +1,30 @@
+<!-- idspaced route 'authors/:id/books/new'
+we prepopulate the form with the author_id. We want to view 
+and author.name so we use the select method for this -->
+NEW
+<%= simple_form_for [@author, @book], url: author_books_path do |b|%>
+    <%= b.error_notification %>
+    <!-- method 1 to display a value in the associated field is:-->
+    <%= b.simple_fields_for :author do |a| %>
+      <%= a.input :name,  value: @author.name %>
+    <% end  %>
+    <!-- method 2: pass a collection with single value, but -->
+    <!-- need CSS modification on select to remove the arrow @authors.scss-->
+    <%= b.input :author_id, collection: [@author], include_blank: false %>
+    
+    <%= b.input :title %>
+    <%= b.button :submit, class: "btn btn-primary" %>
+<% end %>
+
+<!-- remove the arrow
+select { 
+        /* for Firefox */ 
+        -moz-appearance: none; 
+        /* for Safari, Chrome, Opera */ 
+        -webkit-appearance: none; 
+      } 
+      /* for IE10 */ 
+      .dropdown-container select::-ms-expand { 
+        display: none; 
+
+-->

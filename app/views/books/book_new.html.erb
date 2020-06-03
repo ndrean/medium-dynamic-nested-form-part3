@@ -1,0 +1,20 @@
+BOOK NEW: select an author.
+
+<div class="row">
+    <div class="card">
+        <div class="card-header">
+        <p>Given a <code>Book.new</code>, we use the input of the foreign key  <code>author_id</code> present in the Book model</p>
+        <p> In this input, we pass the collection <code>Author.all</code>. CSS trick to remove the arrow</p>
+        </div>
+        <div class="card-body">
+            <%= simple_form_for @book, url: books_book_create_path do |b| %>
+                <p>The foreign key <code>author_id</code> is a disguised select input</p>
+                <%= b.input :author_id, collection: Author.all, include_blank: false %>
+                <p>The model is <code>Book.new</code></p>
+                <%= b.input :new_author %>
+                <%= b.input :title %>
+                <%= b.button :submit, class: "btn btn-primary" %>
+            <% end %>
+        </div>
+    </div>
+</div>

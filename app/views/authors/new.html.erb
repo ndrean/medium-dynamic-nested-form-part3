@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="card">
+        <div class="card-body">
+            <%= simple_form_for @author do |f| %>
+                <%= f.error_notification %>
+                <%= f.input :name %>
+                <%= f.simple_fields_for :books do |b| %>
+                    <%= b.error_notification %>
+                    <div id="select">
+                    <fieldset data-fieldset-id="<%= b.index %>">
+                        <%= b.input :title %>
+                    <% end %>
+                    </fieldset>
+                    </div>
+                <%= f.button :submit, "Create", class:"btn btn-primary" %>
+            <% end%>
+            <button id="addBook">More books</button> 
+        </div>
+    </div>   
+</div>

@@ -1,0 +1,20 @@
+<h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p>
+
+<%= link_to 'Books#book_new : Select an author and create book_new', books_book_new_path %> 
+<br>
+<hr>
+<%= link_to 'Authors#new : Create new author and dynamically books', new_author_path %>
+<br>
+<hr>
+<%= link_to 'Create Book & Author via book', books_new_book_and_author_path %>
+<br>
+<hr>
+<p>id-spaced actions: select an author to create a book:</p>
+<% Author.all.each do |author| %>
+<ul>
+    <li>
+        <%= link_to "#{author.name}" + " Books#new", new_author_book_path(author) %> <br>
+    </li>
+</ul>
+<% end %>

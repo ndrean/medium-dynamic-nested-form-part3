@@ -1,0 +1,7 @@
+<%= simple_form_for @author, url:  do |a| %>
+    <%= a.input :name, collection: Author.all, include_blank: false %>
+    <%= a.fields_for :books do |b| %>
+        <%= b.input :title %>
+    <% end %>
+    <%= a.button :submit %>
+<% end %>

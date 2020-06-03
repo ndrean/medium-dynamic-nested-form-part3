@@ -1,0 +1,34 @@
+NEW BOOK & AUTHOR
+<!-- use 'build_author' with belongs_to and can be populated in controller-->
+<div class="row">
+    <div class="card">
+        <div class="card-header">
+        <p>Given a <code>Book.new</code>, create or find the associated <code>belongs_to</code> author</p>
+        <p>We obtain a new author with <code>Book.new.build_author</code> with <code>accepts_nested_attributes_for :author</code></p>
+        </div>
+        <div class="card-body">
+            <%= simple_form_for @book, url:  books_create_book_and_author_path do |b| %>
+            <%#= b.error_notification  NO NEED as find_or_create%>
+                
+                <%= b.fields_for :author do |a| %>
+                    <!-- example of a solution to pass a value into a form -->
+                    <p>Example 1 with prepopulated input</p>
+                    <%= a.input :name, input_html: {value: Author.first.name} %>
+
+                    <!-- example of another solution to pass a value into a form -->
+                    <p>Example 2 with prepopulated input: <code>collection</code> where the select arrow has been CSS removed</p>
+                    <%= a.input :name, collection: [Author.first], include_blank: false %>
+                    <hr>
+                    <!-- the real input -->
+                    <p>The input for <code>book.author.name</code> with <code>belongs_to</code> is necessarily wrapped by a <code>fields_for</code> builder</p>
+                    <%= a.input :name %> <!-- ,  value_method: :name -->
+                <% end %>
+                <p>The model is <code>Book.new</code> and we ask for the attribute <code>title</code></p>
+                <%= b.input :title %>
+
+                <%= b.button :submit, class:"btn btn-primary" %>
+            <% end %>
+        
+        </div>
+    </div>
+</div>

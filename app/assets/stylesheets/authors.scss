@@ -1,0 +1,25 @@
+// Place all the styles related to the authors controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.form {
+    position: relative;
+}
+
+#addBook {
+    position: absolute;
+    bottom: 22px;
+    left: 110px;
+}
+
+select {
+    /* for Firefox */
+    -moz-appearance: none;
+    /* for Safari, Chrome, Opera */
+    -webkit-appearance: none;
+}
+
+/* for IE10 */
+select::-ms-expand {
+    display: none;
+}
