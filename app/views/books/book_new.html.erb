@@ -9,9 +9,9 @@ BOOK NEW: select an author.
         <div class="card-body">
             <%= simple_form_for @book, url: books_book_create_path do |b| %>
                 <p>The foreign key <code>author_id</code> is a disguised select input</p>
-                <%= b.input :author_id, collection: Author.all, include_blank: false %>
+                <%= b.input :author_id, collection: Author.all, label: "Choose an author", include_blank: false, prompt:"Select an author" %>
                 <p>The model is <code>Book.new</code></p>
-                <%= b.input :new_author %>
+                <%= b.input :new_author, label:'or create an author' %>
                 <%= b.input :title %>
                 <%= b.button :submit, class: "btn btn-primary" %>
             <% end %>
